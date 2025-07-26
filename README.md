@@ -17,27 +17,16 @@ GreenFarm is a responsive and modern e-commerce website built to promote and sel
 ## 📁 Project Structure
 
 GreenFarm/
-│
-├── index.html             # Home page with hero section and intro
-├── about.html             # About GreenFarm with background image
-├── products.html          # Product listing with filters and cards
-├── cart.html              # Shopping cart to view added items
-├── checkout.html          # Checkout form with payment and confirmation
-├── contact.html           # Contact form to reach out to GreenFarm
-│
-├── css/
-│   └── styles.css         # All global styles, layout, animations
-│
-├── js/
-│   └── script.js          # JavaScript for cart, filtering, mobile nav, etc.
-│
-├── assets/
-│   ├── Tomatoes.jpg       # Example product images
-│   ├── Apples.jpg
-│   ├── Milk.jpg
-│   └── ...                # Add more assets like background, icons, etc.
-│
-└── README.md              # Project overview and setup instructions
+index.html – Home page
+about.html – About us page
+products.html – Product listings with filter buttons and product cards
+cart.html – Shopping cart page
+checkout.html – Checkout form with payment options and confirmation popup
+contact.html – Contact form page
+css/styles.css – All styles for the website
+js/script.js – JavaScript for cart, filters, animations, and interactions
+assets/ – Folder containing all product images and background images
+
 
 ## 🧪 Tech Stack
 
