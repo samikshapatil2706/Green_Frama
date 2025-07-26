@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GreenFarm - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">GreenFarm</div>
+      <div class="hamburger" onclick="toggleMenu()"></div>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" data-aos="fade-up">
+    <h1>Welcome to <span style="color: green;">GreenFarm</span></h1>
+    <p>Your trusted partner for fresh and organic farming products.</p>
+    <a href="products.html" class="btn">Explore Products</a>
+  </header>
+
+  <section class="features" data-aos="fade-right">
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>🌱 100% Organic Produce</li>
+      <li>🚚 Fast and Local Delivery</li>
+      <li>🧑‍🌾 Trusted by Farmers</li>
+    </ul>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

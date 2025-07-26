@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - GreenFarm</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+</head>
+
+<body style="margin:0; padding:0; background: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat fixed; font-family: 'Poppins', sans-serif;">
+
+    <nav>
+    <div class="nav-container">
+      <div class="logo">GreenFarm</div>
+      <div class="hamburger" onclick="toggleMenu()"></div>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a> </li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content" style="background: rgba(255, 255, 255, 0.9);">
+    <h1>About GreenFarm</h1>
+    <p>
+      At <strong>GreenFarm</strong>, our mission is simple: to bring fresh, organic, and locally sourced produce straight from the farm to your table. 
+      We work hand-in-hand with passionate farmers who use sustainable farming practices to ensure that what you eat is not only delicious but also environmentally responsible.
+    </p>
+    <p>
+      We believe in a healthier world through mindful eating. Our farms are free from harmful pesticides, and we prioritize ethical treatment of animals and fair trade with local growers.
+    </p>
+    <p>
+      Whether it's farm-fresh eggs, organic vegetables, or responsibly raised poultry, GreenFarm is committed to purity, nutrition, and sustainability in every bite.
+    </p>
+  </main>
+
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

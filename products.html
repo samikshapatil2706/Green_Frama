@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products - GreenFarm</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+    <nav>
+    <div class="nav-container">
+      <div class="logo">GreenFarm</div>
+      <div class="hamburger" onclick="toggleMenu()"></div>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content">
+    <h1>Our Products</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products - GreenFarm</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .filter-buttons {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .filter-buttons button {
+      margin: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      max-width: 250px;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <main class="content">
+    <h1 style="text-align:center;">Our Products</h1>
+
+    <!-- ✅ Category Filter Buttons -->
+    <div class="filter-buttons">
+      <button onclick="filterProducts('all')">All</button>
+      <button onclick="filterProducts('vegetable')">Vegetables</button>
+      <button onclick="filterProducts('fruit')">Fruits</button>
+      <button onclick="filterProducts('dairy')">Dairy</button>
+      <button onclick="filterProducts('poultry')">Poultry</button>
+    </div>
+
+    <!-- ✅ Product Cards -->
+    <div class="product-list">
+
+      <!-- 🥬 Vegetable -->
+      <div class="product-card vegetable">
+        <img src="assent/Tomatoes.jpg" alt="Tomatoes" />
+        <h3>Organic Tomatoes</h3>
+        <p>Fresh, juicy, and pesticide-free tomatoes.</p>
+        <button onclick="addToCart('Tomatoes')">Buy</button>
+      </div>
+
+      <div class="product-card vegetable">
+        <img src="assent/carrorots.jpg" alt="Carrots" />
+        <h3>Organic Carrots</h3>
+        <p>Sweet, crunchy, and loaded with nutrients.</p>
+        <button onclick="addToCart('carrots')">Buy</button>
+      </div>
+
+      <!-- 🍎 Fruit -->
+      <div class="product-card fruit">
+        <img src="assent/Apples.jpg" alt="Apples" />
+        <h3>Farm-Fresh Apples</h3>
+        <p>Crisp and naturally sweet apples from our orchard.</p>
+        <button onclick="addToCart('Apples')">Buy</button>
+      </div>
+
+      <div class="product-card fruit">
+        <img src="assent/Bananas.jpg" alt="Bananas" />
+        <h3>Organic Bananas</h3>
+        <p>High in energy and completely chemical-free.</p>
+        <button onclick="addToCart('Bananas')">Buy</button>
+      </div>
+
+      <!-- 🥛 Dairy -->
+      <div class="product-card dairy">
+        <img src="assent/Milk.jpg" alt="Milk" />
+        <h3>Organic Milk</h3>
+        <p>Pure cow milk straight from the farm.</p>
+        <button onclick="addToCart('Milk')">Buy</button>
+      </div>
+
+      <div class="product-card dairy">
+        <img src="assent/paneer.jpg" alt="paneer" />
+        <h3>Fresh Paneer</h3>
+        <p>Soft and creamy cottage cheese made fresh daily.</p>
+        <button onclick="addToCart('paneer')">Buy</button>
+      </div>
+
+      <!-- 🐔 Poultry -->
+      <div class="product-card poultry">
+        <img src="assent/Eggs.jpg "alt="eggs" />
+        <h3>Fresh Eggs</h3>
+        <p>Collected daily from healthy hens.</p>
+        <button onclick="addToCart('Eggs')">Buy</button>
+      </div>
+
+      <div class="product-card poultry">
+        <img src="assent/Chicken.jpg" alt="Chicken" />
+        <h3>Country Chicken</h3>
+        <p>Free-range desi chicken, chemical-free and tender.</p>
+        <button onclick="addToCart('Chicken')">Buy</button>
+      </div>
+
+    </div>
+  </main>
+<img src="assets/Tomatoes.jpg" alt="Tomatoes" onerror="this.src='assets/placeholder.jpg'" />
+
+  
+  <!-- ✅ JavaScript for Cart and Filter -->
+  <script>
+    function addToCart(product) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product} added to cart!`);
+    }
+
+    function filterProducts(category) {
+      const products = document.querySelectorAll('.product-card');
+      products.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+    

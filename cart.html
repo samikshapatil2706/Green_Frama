@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart - GreenFarm</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    margin: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://images.unsplash.com/photo-1560807707-8cc77767d783') no-repeat center center;
+    background-size: contain; /* Was cover, now contain to reduce size */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center top;
+    color: #fff;
+  }
+
+  nav {
+    background-color: rgba(0, 100, 0, 0.7);
+    padding: 10px 20px;
+    color: #fff;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 4px #000;
+  }
+
+  .cart-items {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    color: #000;
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+
+  .cart-item button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .empty {
+    text-align: center;
+    color: gray;
+    margin-top: 40px;
+  }
+
+  .cart-total {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .nav-back {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .nav-back a {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgba(0, 100, 0, 0.7);
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+
+  .clear-btn {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .clear-btn button {
+    padding: 8px 20px;
+    background: darkred;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-container">
+      <div class="logo">GreenFarm</div>
+      <div class="hamburger" onclick="toggleMenu()"></div>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1>Your Cart</h1>
+
+  <div class="cart-items" id="cartItems"></div>
+
+  <div class="cart-total" id="cartTotal"></div>
+
+  <div class="clear-btn">
+    <button onclick="clearCart()">Clear Cart</button>
+  </div>
+
+  <div class="nav-back">
+    <a href="products.html">← Back to Products</a>
+  </div>
+
+  <script>
+    const cartContainer = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function displayCart() {
+      cartContainer.innerHTML = "";
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p class="empty">Your cart is empty.</p>';
+        cartTotal.textContent = "";
+        return;
+      }
+
+      let itemCount = {};
+      cart.forEach(item => {
+        itemCount[item] = (itemCount[item] || 0) + 1;
+      });
+
+      let total = 0;
+      for (let product in itemCount) {
+        const count = itemCount[product];
+        const price = getPrice(product);
+        total += price * count;
+
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.innerHTML = `
+          <span>${product} × ${count}</span>
+          <span>₹${price * count}</span>
+          <button onclick="removeItem('${product}')">Remove</button>
+        `;
+        cartContainer.appendChild(itemDiv);
+      }
+
+      cartTotal.textContent = `Total: ₹${total}`;
+    }
+
+    function getPrice(product) {
+      const prices = {
+        "Tomatoes": 30,
+        "Carrots": 25,
+        "Apples": 80,
+        "Bananas": 50,
+        "Milk": 45,
+        "Paneer": 90,
+        "Eggs": 60,
+        "Chicken": 180
+      };
+      return prices[product] || 50;
+    }
+
+    function removeItem(product) {
+      const index = cart.indexOf(product);
+      if (index !== -1) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart();
+      }
+    }
+
+    function clearCart() {
+      cart = [];
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+    }
+
+    // Call once on load
+    displayCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout - GreenFarm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1614696943226-8b21c759f353') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    nav {
+      background-color: rgba(0, 100, 0, 0.8);
+      padding: 10px 20px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .hamburger {
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+      display: none;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-menu li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.97);
+      padding: 30px;
+      border-radius: 10px;
+      color: #000;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    main h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: green;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    input, textarea, select {
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: green;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: darkgreen;
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        flex-direction: column;
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-menu.show {
+        display: flex;
+        margin-top: 10px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <<nav>
+    <div class="nav-container">
+      <div class="logo">GreenFarm</div>
+      <div class="hamburger" onclick="toggleMenu()"></div>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Checkout</h1>
+    <form onsubmit="submitOrder(event)">
+      <label for="name">Name</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required />
+
+      <label for="address">Address</label>
+      <textarea id="address" rows="4" required></textarea>
+
+      <label for="payment">Payment Method</label>
+      <select id="payment" required>
+        <option value="">-- Select Payment Method --</option>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+        <option value="UPI">UPI</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+      </select>
+
+      <button type="submit">Place Order</button>
+    </form>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    function submitOrder(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const address = document.getElementById("address").value;
+      const payment = document.getElementById("payment").value;
+
+      if (!payment) {
+        alert("❌ Please select a payment method.");
+        return;
+      }
+
+      const confirmMessage = `
+✅ Confirm Your Order:
+------------------------------
+👤 Name: ${name}
+📧 Email: ${email}
+🏠 Address: ${address}
+💳 Payment: ${payment}
+------------------------------
+Do you want to place this order?
+      `;
+
+      if (confirm(confirmMessage)) {
+        alert("🎉 Order placed successfully!");
+        localStorage.removeItem("cart");
+        window.location.href = "index.html";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - GreenFarm</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    .content {
+      background-color: rgba(0, 0, 0, 0.6);
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 40px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+
+    form button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #218838;
+    }
+
+    .form-message {
+      margin-top: 15px;
+      font-style: italic;
+      color: #ffd;
+    }
+
+    nav {
+      background-color: #2e7d32;
+      padding: 10px 0;
+      color: white;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: #2e7d32;
+        padding: 10px;
+        position: absolute;
+        right: 0;
+        top: 60px;
+      }
+      .nav-menu.show {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<<nav>
+    <div class="nav-container">
+      <div class="logo">GreenFarm</div>
+      <div class="hamburger" onclick="toggleMenu()"></div>
+      <ul class="nav-menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<main class="content" data-aos="fade-up">
+  <h1>Contact Us</h1>
+  <form id="contactForm">
+    <label for="name">Name</label>
+    <input type="text" id="name" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required />
+
+    <label for="message">Message</label>
+    <textarea id="message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+    <div class="form-message" id="formMessage"></div>
+  </form>
+</main>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+  }
+
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("formMessage").textContent = "Thank you! We’ll contact you soon.";
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
