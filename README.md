@@ -18,13 +18,21 @@ GreenFarm is a responsive and modern e-commerce website built to promote and sel
 
 GreenFarm/
 index.html – Home page
+
 about.html – About us page
+
 products.html – Product listings with filter buttons and product cards
+
 cart.html – Shopping cart page
+
 checkout.html – Checkout form with payment options and confirmation popup
+
 contact.html – Contact form page
+
 css/styles.css – All styles for the website
+
 js/script.js – JavaScript for cart, filters, animations, and interactions
+
 assets/ – Folder containing all product images and background images
 
 
